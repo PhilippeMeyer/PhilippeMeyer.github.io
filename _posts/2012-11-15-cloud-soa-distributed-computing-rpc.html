@@ -1,0 +1,16 @@
+---
+layout: post
+title: Cloud, SOA, Distributed computing, RPC same potential pitfalls !
+date: '2012-11-15T22:28:00.000+01:00'
+author: Philippe Meyer
+tags:
+- Granularity
+- cloud
+- RPC
+- SOA
+modified_time: '2012-12-06T23:26:27.634+01:00'
+blogger_id: tag:blogger.com,1999:blog-3943705056814725887.post-5554938582975452947
+blogger_orig_url: https://h-si.blogspot.com/2012/11/cloud-soa-distributed-computing-rpc.html
+---
+
+It is a while since client/server technology has been first introduced. Technologies have been improving with RPC, distributed computing, SOA, ESB, cloud, ... but the same doubts are always around the corner : this technology XY does not work, is not performing, ... even if we have with web2.0, daily, in front of us, a proof that distributed computing and cloud works.<br /><br />What is the root cause of these concerns ? This is mainly coming from the lack of understanding of what is happening behind the scene. Even with primitive client/technology, developers could ignore what was happening behind their SQL statements or their stored procedures. Network latency, network stacks, marshalling/unmarshalling are more and more hidden from the developer. Therefore, today as in the past, granularity is not so much in focus. This leads to too small or too big services that are either not efficient or not responsive enough. Executing a simple addition through the network has never been and is still not a good idea neither is transferring 1GB of data to call a service.<br /><br />These problems are also coming from a common pitfall : the lack of IT urbanization. Without a clear vision of the services to implement coming from a functional map of the essence of the information system, services tend to be multiple, redundant and, in one word, &nbsp;inadequate. If such a map is not defined, it is then very difficult to have any control on the service granularity. As an example, some organizations are using service directories to try to organize and manage the profusion of services that have been created having in mind mainly a technical approach.<br /><br />To ensure success, a list of services should be defined before hand matching design principles and non functional requirements (like granularity) so that the use of services is performing as expected. This approach is also preventing redundant services which are creating maintenance nightmares... as with more old fashioned technologies!<br /><br /><br />

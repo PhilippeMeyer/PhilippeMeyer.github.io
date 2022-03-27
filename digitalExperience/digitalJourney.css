@@ -50,15 +50,16 @@ img {
 }
 
 .ag-timeline-block {
-  padding: 150px 0 100px 0;
+  padding: 100px 0 0 0;
 }
 .ag-timeline_title-box {
-  padding: 0 0 30px;
+  padding: 0 0 80px;
 
   text-align: center;
 }
 .ag-timeline_tagline {
   font-size: 80px;
+  font-family: 'ESL Legend', sans-serif;
   color: rgb(84, 89, 95);
 }
 .ag-timeline_title {

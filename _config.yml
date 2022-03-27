@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: @meyer.today
+title: meyer.today
 email: philippe@meyer.today
 description: >- Some thoughts around digitalization and blockchain
 baseurl: "" # the subpath of your site, e.g. /blog

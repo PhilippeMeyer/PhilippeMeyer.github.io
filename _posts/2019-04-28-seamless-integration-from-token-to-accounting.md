@@ -16,9 +16,9 @@ The so-called **smart contracts** have been around for quite a while with the fi
 
 By the way do you know what a smart contract is? Well to start with, it is **neither smart nor a binding legal contract!** It is rather a piece of code running on a blockchain which implements agreed business rules between two or multiple parties.
 How can this distributed piece of code be useful for a business? One example which has been very popular over the last year is **asset tokenisation:** the sudden emergence of the ICO (which are represented by tokens) phenomenon has enabled start-ups to get funding directly from investors disrupting the venture capital market. Out of this fast development, a categorization of three main tokens depending on their use has emerged:
-* Payment token: tokens used as a mean of payment. Cryptocurrencies like bitcoin are typical payment tokens.
-* Security token: tokens that are like traditional securities, ICO have been the first popular example of this kind of tokens.
-* Utility token: those tokens are meant to be used to buy a service provided by the issuer. This is like selling forward goods or services that are going to be provided in the future.
+* **Payment token:** tokens used as a mean of payment. Cryptocurrencies like bitcoin are typical payment tokens.
+* **Security token:** tokens that are like traditional securities, ICO have been the first popular example of this kind of tokens.
+* **Utility token:** those tokens are meant to be used to buy a service provided by the issuer. This is like selling forward goods or services that are going to be provided in the future.
 
 # Utility token #
 

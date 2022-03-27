@@ -37,7 +37,7 @@ The first consequence of the radical difference is that those tokens can be exch
 # Invoicing tokens  #
   
 But an even more interesting impact of storing those agreements in a digital form is that they can be made directly actionable (at least whilst we stay in a pure digital world). 
-In essence, the details of the services to be provided could be stored in a smart contract and upon the reception of a token the agreed services could be provided without any form of transformation. **No invoicing anymore, no payment recovery… **
+In essence, the details of the services to be provided could be stored in a smart contract and upon the reception of a token the agreed services could be provided without any form of transformation. **No invoicing anymore, no payment recovery…**
 Of course, this is not yet possible as most corporations as well as the authorities are expecting regular invoices to be accounted properly. We are not yet ready for a **seamless digital supply chain down to accounting**, but this is coming.
   
 A side point to mention in that respect is that to the contrary of money, **transactions are not fungible**. This means that each type token can embed its own business rules which would be then made immutable.
@@ -63,3 +63,7 @@ In this simplistic example, we foresee how core a blockchain implementation coul
 A side note, considering the cost of storing data on a Blockchain we have not considered an on-chain solution for distributing the data which could also be feasible if the volume and the nature of data are appropriate.
   
 **As this example like many others show, using the utility token technology, the whole value chain gets seamless and automated from the service description to the payment. A new SAP Blockchain based?**
+
+
+>[Also published on Medium](https://medium.com/@philippe.famille.meyer/seamless-integration-from-tokens-to-accounting-eea4569ed6af)
+>

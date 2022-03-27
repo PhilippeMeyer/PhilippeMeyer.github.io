@@ -11,9 +11,10 @@ blogger_orig_url: https://h-si.blogspot.com/2016/04/looking-for-blockchain-use-c
 ---
 ![Parkcoin project](https://PhilippeMeyer.github.io/docs/assets/images/parkcoin.png)
   
-  Looking for Blockchain use cases in our daily life, we came across the idea of using Blockchain for parking tickets. To move this idea further we have been presenting it to the GTEC Blockchain contest&nbsp;taking place in Berlin in 2016. We have been very pleased to be among the finalists!
+  
+Looking for Blockchain use cases in our daily life, we came across the idea of using Blockchain for parking tickets. To move this idea further we have been presenting it to the GTEC Blockchain contest&nbsp;taking place in Berlin in 2016. We have been very pleased to be among the finalists!
 
-![Parkcoin at F6S 2016](https://PhilippeMeyer.github.io/docs/assets/images/parkcoinF6S.png | height=250px)
+![Parkcoin at F6S 2016](https://PhilippeMeyer.github.io/docs/assets/images/parkcoinF6S.png)
 
 As mentioned by Professor Michael Mainelli in a [recent&nbsp; Coindesk article](http://www.coindesk.com/smart-contracts-need-shrewder-people/?utm_source=CoinDesk+subscribers&amp;utm_campaign=d45766683a-EMAIL_RSS_CAMPAIGNT2&amp;utm_medium=email&amp;utm_term=0_74abb9e6ab-d45766683a-79127377) long term smart contracts will take a while to take off:
 >At least in the near term “dumb and short-term contracts” will prevail over “smart long-term contracts”

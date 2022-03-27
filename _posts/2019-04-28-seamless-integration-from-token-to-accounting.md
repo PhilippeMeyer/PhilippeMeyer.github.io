@@ -8,8 +8,8 @@ tags: #blockchain, #dvp, #ethereum, #smartcontract
 modified_time: '2019-04-28T20:14:49.938+02:00'
 ---
 ![token to accounting](https://PhilippeMeyer.github.io/docs/assets/images/tokenToAccounting.png)
-  
-  
+<br />
+<br />  
 The so-called **smart contracts** have been around for quite a while with the first global public implementation made available with Ethereum 2015. This technology is a real breakthrough and proved to be very disruptive over several use cases.
 
 # Smart contracts #
@@ -64,8 +64,7 @@ In this simplistic example, we foresee how core a blockchain implementation coul
 A side note, considering the cost of storing data on a Blockchain we have not considered an on-chain solution for distributing the data which could also be feasible if the volume and the nature of data are appropriate.
   
 **As this example like many others show, using the utility token technology, the whole value chain gets seamless and automated from the service description to the payment. A new SAP Blockchain based?**
-  
-  
-  
+<br />
+<br />  
 >[Also published on Medium](https://medium.com/@philippe.famille.meyer/seamless-integration-from-tokens-to-accounting-eea4569ed6af)
 >

@@ -9,6 +9,24 @@ Using the unique source of truth attribute of blockchain technology helps tremen
 For an NFT for example, it is trivial to block any transfer performed by the owner of a token if the token has been pledged. 
 And only the creditor can remove the pledge
 
+## Consign of an artwork
+
+When a piece of art is exposed in a gallery, there is an agreement between the artist and the gallery which gives to the gallery the exclusivity of the sale for
+a period of time. This is trivial to implement in a smart contract: the artist is not allowed to perform a transfer until the end of the exclusivity period.
+
+## Making a document actionable
+
+Processes have been improved thanks to digitazation. In particular, digital signatures improve significantly the processes avoiding some manual steps and
+cumbersome verifications. Nevertheless, the digitally signed document is still outside the process, it is not by it self actionable. Blockchain to the countrary, 
+does not store the signature in the document but can store the signature of a document that is uniquely referenced (off-chain). This makes a significant difference, 
+as the validation of the document is a blockchain transaction which can be used to trigger atomically some further actions. 
+
+## Atomic swap between assets
+
+One big expectation from the blockchain technology applied to the securities industry is to reduce the reconciliation effort which is currently huge. 
+The need of reconciling comes from the fact that the two legs (security and cash) of the transactions are independent and send through messages. Therefore it is important to verify the correct execution of those two legs and their synchronizaton.
+Having both the cash and the security represented on the same transactional network completly irradicates the need for reconciliation: the whole transaction is performed as an indivisible swap between the security and a stable coin representing the cash
+
 # Introducing fairer financial rules
 
 ## Voting rights based on the time a stock has been hold

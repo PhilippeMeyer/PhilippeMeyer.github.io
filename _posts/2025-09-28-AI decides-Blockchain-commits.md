@@ -1,10 +1,14 @@
 ---
 layout: post
-title: AI decides, Blockchain commits: the future of digital processes
+title: "AI decides, Blockchain commits: the future of digital processes"
 date: '2025-09-28T11:16:49.938+02:00'
 author: Philippe Meyer
-categories: blockchain, ai
-tags: #blockchain, #ai 
+categories: 
+	- blockchain
+	- ai
+tags:
+	- blockchain
+	- ai 
 modified_time: '2025-09-28T11:16:49.938+02:00'
 ---
 ![AI decides, Blockchain commits](https://PhilippeMeyer.github.io/docs/assets/images/illustration_AI_decides_Blockchain_commits.svg)
@@ -201,6 +205,6 @@ into durable operating leverage.
 
 <br />
 <br />  
->[Also published on LinkedIn](https://www.linkedin.com/pulse/ai-decides-blockchain-commits-future-digital-philippe-meyer-msc-mba-gm2ce/?trackingId=dC42rCgY%2FiWgNpoDpW7kaQ%3D%3D)
->
+[Also published on LinkedIn](https://www.linkedin.com/pulse/ai-decides-blockchain-commits-future-digital-philippe-meyer-msc-mba-gm2ce/?trackingId=dC42rCgY%2FiWgNpoDpW7kaQ%3D%3D)
+
 

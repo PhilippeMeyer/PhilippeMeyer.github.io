@@ -97,7 +97,7 @@ MDTA is pegged 1:1 to the Euro, eliminating the price volatility that makes nati
 
 > **1 MDTA = 1 EUR = 1 Data Point**
 
-Customers purchase MDTA tokens via a standard fiat on-ramp (bank transfer converts EUR to MDTA). The tokens are held in a customer-specific smart contract on the Ethereum blockchain — fully visible and auditable by the customer at all times.
+Customers purchase MDTA tokens via a standard fiat on-ramp (bank transfer converts EUR to MDTA) or through a EUR stablecoin. The tokens are held in a customer-specific smart contract on the Ethereum blockchain — fully visible and auditable by the customer at all times.
 
 ### Smart Contract Architecture
 

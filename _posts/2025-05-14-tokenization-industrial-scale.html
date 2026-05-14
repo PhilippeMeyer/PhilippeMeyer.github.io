@@ -1,0 +1,765 @@
+---
+layout: post
+title: "Tokenization is not yet an industrial technology"
+date: 2025-05-14 08:00:00 +0000
+categories: blockchain
+author: Philippe Meyer
+description: "A practitioner analysis of the economic gap, regulatory constraints, schema standardization, secondary market liquidity, and demand-side barriers standing between tokenization and industrial scale."
+---
+![Tokenization article illustration](/docs/assets/images/tokenisation-not-yet.png)
+
+<style>
+  .tok-article { font-family: inherit; }
+
+  /* ── Stats ── */
+  .tok-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 2rem 0;
+  }
+  @media (max-width: 560px) { .tok-stat-row { grid-template-columns: 1fr; } }
+  .tok-stat {
+    background: #f5f4f1;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+  }
+  .tok-stat .lbl {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 5px;
+  }
+  .tok-stat .val {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.1;
+  }
+  .tok-stat .sub {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* ── Section heading override ── */
+  .tok-article h2 {
+    font-size: 20px;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e2e2;
+  }
+  .tok-article h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── Pipeline ── */
+  .tok-pipeline { margin: 1.5rem 0; }
+  .tok-step { display: flex; gap: 0; align-items: stretch; }
+  .tok-icon { width: 30px; display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .tok-dot { width: 9px; height: 9px; border-radius: 50%; background: #185FA5; margin-top: 16px; flex-shrink: 0; }
+  .tok-line { width: 1px; background: #e2e2e2; flex: 1; margin: 2px auto 0; }
+  .tok-step:last-child .tok-line { display: none; }
+  .tok-step-body { flex: 1; padding: 8px 0 16px 14px; }
+  .tok-step-title { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+  .tok-step-desc { font-size: 13px; color: #666; line-height: 1.55; margin-top: 3px; }
+
+  /* ── Compare grid ── */
+  .tok-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 520px) { .tok-compare { grid-template-columns: 1fr; } }
+  .tok-card {
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+  }
+  .tok-card.featured { border-color: #b5d4f4; border-width: 2px; background: #fafcff; }
+  .tok-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 0.65rem;
+  }
+  .tag-blue { background: #ddeaf8; color: #0C447C; }
+  .tag-gray { background: #ede9e3; color: #666; }
+  .tok-card-title { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 0.65rem; }
+  .tok-card ul { list-style: none; padding: 0; margin: 0; }
+  .tok-card ul li {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .tok-card ul li:last-child { border-bottom: none; }
+  .li-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+  .li-dot.blue { background: #378ADD; }
+  .li-dot.gray { background: #bbb; }
+
+  /* ── Cost table ── */
+  .tok-table-wrap { margin: 1.5rem 0; overflow-x: auto; }
+  table.tok-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .tok-table th {
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #888;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .tok-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+    line-height: 1.5;
+    color: #444;
+  }
+  .tok-table tr:last-child td { border-bottom: none; }
+  .tok-table .trad { background: #f5f4f1; }
+  .bdg {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 3px;
+  }
+  .b-green { background: #eaf3de; color: #3B6D11; }
+  .b-amber { background: #fdf0d8; color: #5c3a0a; }
+  .b-red   { background: #fceaea; color: #8B2020; }
+
+  /* ── Callout boxes ── */
+  .box-blue {
+    border-left: 3px solid #378ADD;
+    background: #ddeaf8;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .box-blue .box-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #185FA5;
+    margin-bottom: 6px;
+  }
+  .box-blue p { font-size: 14px; color: #0C447C; line-height: 1.75; margin: 0; }
+
+  .box-amber {
+    border-left: 3px solid #c47a1a;
+    background: #fdf0d8;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .box-amber .box-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #c47a1a;
+    margin-bottom: 6px;
+  }
+  .box-amber p { font-size: 14px; color: #5c3a0a; line-height: 1.75; margin: 0; }
+
+  /* ── Schema ── */
+  .tok-schema {
+    background: #f5f4f1;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+    margin: 1.5rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: #444;
+    overflow-x: auto;
+  }
+  .sk { color: #185FA5; }
+  .sv { color: #3B6D11; }
+  .sn { color: #c47a1a; }
+  .sc { color: #aaa; font-style: italic; }
+
+  /* ── Reg grid ── */
+  .tok-reg {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 520px) { .tok-reg { grid-template-columns: 1fr; } }
+  .tok-reg-card {
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .reg-title { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 5px; }
+  .reg-desc { font-size: 12px; color: #777; line-height: 1.55; margin-bottom: 8px; }
+  .sts {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 20px;
+  }
+  .s-gap { background: #fceaea; color: #8B2020; }
+  .s-partial { background: #fdf0d8; color: #5c3a0a; }
+  .s-ok { background: #eaf3de; color: #3B6D11; }
+
+  /* ── Root causes ── */
+  .tok-causes { display: flex; flex-direction: column; gap: 10px; margin: 1.5rem 0; }
+  .tok-cause {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: #f5f4f1;
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+  }
+  .c-num { font-size: 20px; font-weight: 700; color: #ddd; min-width: 28px; line-height: 1.1; padding-top: 2px; }
+  .c-title { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 3px; }
+  .c-desc { font-size: 13px; color: #666; line-height: 1.6; }
+
+  /* ── Unlock grid ── */
+  .tok-unlock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 520px) { .tok-unlock { grid-template-columns: 1fr; } }
+  .tok-unlock-card {
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .u-title { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+  .u-desc { font-size: 12px; color: #777; line-height: 1.55; }
+
+  /* ── Gap cards ── */
+  .tok-gap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 600px) { .tok-gap { grid-template-columns: 1fr 1fr; } }
+  .tok-gap-card { background: #f5f4f1; border-radius: 8px; padding: 0.9rem 1rem; }
+  .g-title { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+  .g-desc { font-size: 12px; color: #777; line-height: 1.5; }
+
+  /* ── Demand grid ── */
+  .tok-demand {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 1.5rem 0;
+  }
+  @media (max-width: 580px) { .tok-demand { grid-template-columns: 1fr; } }
+  .tok-demand-card {
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .d-seg { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 7px; }
+  .d-barrier { font-size: 13px; color: #444; line-height: 1.6; margin-bottom: 9px; }
+  .d-unlock { font-size: 12px; color: #185FA5; line-height: 1.55; }
+
+  /* ── Tension box ── */
+  .tok-tension { border: 1px solid #e2e2e2; border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; }
+  .t-label { font-size: 12px; font-weight: 600; color: #888; margin-bottom: 1rem; }
+  .tok-tension-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 520px) { .tok-tension-grid { grid-template-columns: 1fr; } }
+  .t-side { padding: 1rem; border-radius: 8px; }
+  .t-side.left { background: #ddeaf8; }
+  .t-side.right { background: #f5f4f1; }
+  .t-side-label { font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 8px; }
+  .t-side.left .t-side-label { color: #185FA5; }
+  .t-side.right .t-side-label { color: #888; }
+  .t-side p { font-size: 13px; line-height: 1.65; margin: 0; }
+  .t-side.left p { color: #0C447C; }
+  .t-side.right p { color: #444; }
+
+  /* ── Blockquote ── */
+  .tok-article blockquote {
+    border-left: 3px solid #e2e2e2;
+    padding: 0.75rem 1.5rem;
+    margin: 2rem 0;
+    background: none;
+  }
+  .tok-article blockquote p {
+    font-size: 17px;
+    font-style: italic;
+    color: #888;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── Roadmap ── */
+  .tok-roadmap { margin: 1.5rem 0; }
+  .rm-item { display: flex; gap: 16px; align-items: flex-start; }
+  .rm-left { display: flex; flex-direction: column; align-items: center; width: 72px; flex-shrink: 0; }
+  .rm-dot { width: 9px; height: 9px; border-radius: 50%; background: #185FA5; margin-top: 14px; }
+  .rm-line { width: 1px; background: #e2e2e2; flex: 1; min-height: 20px; }
+  .rm-item:last-child .rm-line { display: none; }
+  .rm-badge { font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: 20px; margin-top: 10px; text-align: center; letter-spacing: 0.04em; }
+  .badge-now    { background: #fceaea; color: #8B2020; }
+  .badge-next   { background: #fdf0d8; color: #5c3a0a; }
+  .badge-future { background: #eaf3de; color: #3B6D11; }
+  .rm-content { flex: 1; padding: 8px 0 24px; }
+  .rm-title { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+  .rm-desc { font-size: 13px; color: #666; line-height: 1.65; }
+
+  /* ── Footer note ── */
+  .tok-footnote { font-size: 13px; color: #aaa; line-height: 1.7; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e2e2e2; }
+</style>
+
+<div class="tok-article">
+
+<p>European banks issue more than 2 million structured products per quarter. Most tokenization platforms are still celebrating their first hundred. Everyone says tokenization will revolutionize finance — but if you compare it to how banks already issue structured products, one thing becomes clear: tokenization is still far from industrial scale.</p>
+
+<div class="tok-stat-row">
+  <div class="tok-stat">
+    <div class="lbl">Structured products issued</div>
+    <div class="val">2M+</div>
+    <div class="sub">per quarter in Europe, by traditional banks</div>
+  </div>
+  <div class="tok-stat">
+    <div class="lbl">Tokenized assets live</div>
+    <div class="val">~100s</div>
+    <div class="sub">on most platforms, celebrated as milestones</div>
+  </div>
+  <div class="tok-stat">
+    <div class="lbl">Cost per tokenized asset</div>
+    <div class="val">10–100×</div>
+    <div class="sub">vs. templated structured note issuance today</div>
+  </div>
+</div>
+
+<h2>What banks already do at scale</h2>
+<p>Large banks have built fully industrial issuance platforms over decades. Behind every certificate or autocall sits a pipeline that most people never see.</p>
+
+<div class="tok-pipeline">
+  <div class="tok-step">
+    <div class="tok-icon"><div class="tok-dot"></div><div class="tok-line"></div></div>
+    <div class="tok-step-body">
+      <div class="tok-step-title">Product structuring &amp; approval</div>
+      <div class="tok-step-desc">Workflow engines coordinate front office, middle office, back office, and legal sign-off — often within hours.</div>
+    </div>
+  </div>
+  <div class="tok-step">
+    <div class="tok-icon"><div class="tok-dot"></div><div class="tok-line"></div></div>
+    <div class="tok-step-body">
+      <div class="tok-step-title">ISIN generation &amp; product referencing</div>
+      <div class="tok-step-desc">Each product gets a unique identifier instantly, enabling settlement, reporting, and regulatory compliance.</div>
+    </div>
+  </div>
+  <div class="tok-step">
+    <div class="tok-icon"><div class="tok-dot"></div><div class="tok-line"></div></div>
+    <div class="tok-step-body">
+      <div class="tok-step-title">Pricing engine integration</div>
+      <div class="tok-step-desc">Traders calibrate pricing models live. Thousands of products can be re-priced simultaneously when markets move.</div>
+    </div>
+  </div>
+  <div class="tok-step">
+    <div class="tok-icon"><div class="tok-dot"></div><div class="tok-line"></div></div>
+    <div class="tok-step-body">
+      <div class="tok-step-title">Distribution to exchanges &amp; liquidity venues</div>
+      <div class="tok-step-desc">Quotes flow to SIX, Euronext, and OTC desks automatically. Hundreds of thousands of products are live and tradeable simultaneously.</div>
+    </div>
+  </div>
+</div>
+
+<div class="box-blue">
+  <div class="box-lbl">Concrete example</div>
+  <p>A Swiss private bank wants to issue 500 capital-protected notes on a basket of clean energy equities. Using a major structuring bank's platform, the notes can be structured, approved, ISIN-assigned, priced, and live on SIX within a single business day — without any bespoke engineering.</p>
+</div>
+
+<h2>What tokenization looks like today</h2>
+<p>Most tokenization projects are built around a single-asset model: one real-world asset, one token, one smart contract deployed for that specific deal. While technically interesting, it is far from operational scale.</p>
+
+<div class="tok-compare">
+  <div class="tok-card featured">
+    <span class="tok-tag tag-blue">Traditional issuance</span>
+    <div class="tok-card-title">Industrial pipeline</div>
+    <ul>
+      <li><span class="li-dot blue"></span>Template-driven product creation</li>
+      <li><span class="li-dot blue"></span>Hundreds of thousands live simultaneously</li>
+      <li><span class="li-dot blue"></span>Automated lifecycle management</li>
+      <li><span class="li-dot blue"></span>Integrated with trading infrastructure</li>
+      <li><span class="li-dot blue"></span>Standardized product descriptions (term sheets, PRIIP KIDs)</li>
+    </ul>
+  </div>
+  <div class="tok-card">
+    <span class="tok-tag tag-gray">Tokenization today</span>
+    <div class="tok-card-title">Artisanal model</div>
+    <ul>
+      <li><span class="li-dot gray"></span>One asset → one smart contract</li>
+      <li><span class="li-dot gray"></span>Manual deployment per issuance</li>
+      <li><span class="li-dot gray"></span>Lifecycle managed externally or manually</li>
+      <li><span class="li-dot gray"></span>Limited trading venue integration</li>
+      <li><span class="li-dot gray"></span>No standardized on-chain product schemas</li>
+    </ul>
+  </div>
+</div>
+
+<div class="box-blue">
+  <div class="box-lbl">Concrete example</div>
+  <p>A tokenization platform tokenizes a €10M commercial real estate loan. Engineers write and deploy a bespoke smart contract for that single asset. When the loan is partially repaid, someone updates the contract manually. Coupon payments are tracked off-chain. This is not a pipeline — it is a craft operation.</p>
+</div>
+
+<h2>The economic gap: what things actually cost</h2>
+<p>The tokenization industry rarely publishes cost-per-issuance data, which makes comparison difficult. But order-of-magnitude estimates from practitioners tell a clear story.</p>
+
+<div class="tok-table-wrap">
+  <table class="tok-table">
+    <thead>
+      <tr>
+        <th style="width:36%">Cost driver</th>
+        <th style="width:32%">Traditional (templated)</th>
+        <th style="width:32%">Tokenization (today)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Smart contract / product engineering</td>
+        <td class="trad"><span class="bdg b-green">~€0 marginal</span><br>Template reused</td>
+        <td><span class="bdg b-red">€20k–€100k+</span><br>Bespoke per deal</td>
+      </tr>
+      <tr>
+        <td>Legal &amp; structuring opinion</td>
+        <td class="trad"><span class="bdg b-green">~€2k–5k</span><br>Standardized docs</td>
+        <td><span class="bdg b-amber">€20k–50k</span><br>Novel legal territory</td>
+      </tr>
+      <tr>
+        <td>ISIN / product registration</td>
+        <td class="trad"><span class="bdg b-green">Automated</span><br>Via NNA integration</td>
+        <td><span class="bdg b-red">Manual or absent</span></td>
+      </tr>
+      <tr>
+        <td>Audit &amp; security review</td>
+        <td class="trad"><span class="bdg b-green">Covered</span><br>By platform certification</td>
+        <td><span class="bdg b-amber">€10k–30k</span><br>Per smart contract</td>
+      </tr>
+      <tr>
+        <td>Time to issuance</td>
+        <td class="trad"><span class="bdg b-green">Hours to days</span></td>
+        <td><span class="bdg b-red">Weeks to months</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box-blue">
+  <div class="box-lbl">Worked example</div>
+  <p>A €5M private credit note tokenized today might cost €80k–€150k in engineering, legal, and audit fees before a single investor sees it. The same structured note issued through a major bank's certificate platform costs €5k–€15k all-in, with a time-to-market measured in hours. The economics flip only when platforms achieve template-driven issuance where marginal cost per product approaches zero — as it does in traditional issuance. That point does not yet exist at meaningful scale.</p>
+</div>
+
+<h2>The regulatory wall: what traditional platforms handle automatically</h2>
+<p>Much of the operational cost in traditional structured product issuance is regulatory compliance — and most of it is automated. Tokenization platforms largely bypass this machinery, which limits who can buy, where products can be sold, and what reporting is required.</p>
+
+<div class="tok-reg">
+  <div class="tok-reg-card">
+    <div class="reg-title">ISIN issuance &amp; NNA registration</div>
+    <div class="reg-desc">Traditional: automated via integration with national numbering authorities. Products are globally identifiable from day one.</div>
+    <span class="sts s-gap">Gap: mostly manual or absent</span>
+  </div>
+  <div class="tok-reg-card">
+    <div class="reg-title">PRIIP KID</div>
+    <div class="reg-desc">Traditional: generated automatically from product parameters. Required for any retail distribution in the EU.</div>
+    <span class="sts s-gap">Gap: almost entirely missing</span>
+  </div>
+  <div class="tok-reg-card">
+    <div class="reg-title">MiFID product governance</div>
+    <div class="reg-desc">Traditional: target market, complexity classification, and distribution restrictions built into the issuance workflow.</div>
+    <span class="sts s-partial">Partial: handled off-chain</span>
+  </div>
+  <div class="tok-reg-card">
+    <div class="reg-title">Transaction reporting (EMIR / MiFIR)</div>
+    <div class="reg-desc">Traditional: automated reporting to trade repositories. Real-time for derivatives, T+1 for securities.</div>
+    <span class="sts s-partial">Partial: requires external bridge</span>
+  </div>
+  <div class="tok-reg-card">
+    <div class="reg-title">Prospectus / exemption management</div>
+    <div class="reg-desc">Traditional: exemption thresholds tracked automatically. Prospectus triggered when required.</div>
+    <span class="sts s-gap">Gap: typically manual</span>
+  </div>
+  <div class="tok-reg-card">
+    <div class="reg-title">DLT Pilot Regime (EU, since 2023)</div>
+    <div class="reg-desc">Traditional: not applicable — legacy rails are the default.</div>
+    <span class="sts s-ok">Opportunity: sandbox for tokenized securities</span>
+  </div>
+</div>
+
+<div class="box-amber">
+  <div class="box-lbl">The practical consequence</div>
+  <p>A tokenized product that lacks an ISIN cannot be held in most custodian systems, cannot be reported under MiFIR, and cannot be distributed to retail investors under MiFID. This limits most tokenized assets to a narrow universe of institutional or professional investors — a fundamental distribution constraint that has nothing to do with the quality of the underlying technology. The EU DLT Pilot Regime, live since March 2023, creates a genuine opening — but uptake has been slow and asset caps of €6bn per operator limit its industrial relevance for now.</p>
+</div>
+
+<h2>The missing piece: self-described financial products</h2>
+<p>One of the most underappreciated promises of tokenization is that smart contracts can make financial products genuinely self-describing. Every term, every payoff rule, every lifecycle event could be encoded in the token itself — not in a PDF term sheet sitting in a document management system.</p>
+
+<div class="tok-gap">
+  <div class="tok-gap-card"><div class="g-title">Payoff structure</div><div class="g-desc">Barrier levels, participation rates, capital protection — encoded in the contract, not a PDF</div></div>
+  <div class="tok-gap-card"><div class="g-title">Coupon rules</div><div class="g-desc">Conditional coupons, memory effects, autocall triggers — verifiable on-chain by any party</div></div>
+  <div class="tok-gap-card"><div class="g-title">Corporate action logic</div><div class="g-desc">Dividend adjustments, merger handling — automated rather than requiring manual intervention</div></div>
+  <div class="tok-gap-card"><div class="g-title">Maturity conditions</div><div class="g-desc">Redemption at par, barrier breach scenarios — settled automatically without a back-office team</div></div>
+</div>
+
+<p>Here is what a minimal on-chain product schema for an autocall note might look like:</p>
+
+<div class="tok-schema">
+{<br>
+&nbsp;&nbsp;<span class="sk">"productType"</span>: <span class="sv">"AutocallNote"</span>,<br>
+&nbsp;&nbsp;<span class="sk">"version"</span>: <span class="sv">"1.2"</span>, <span class="sc">// schema version for interoperability</span><br>
+&nbsp;&nbsp;<span class="sk">"underlying"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"type"</span>: <span class="sv">"basket"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"components"</span>: [<span class="sv">"NESN.SW"</span>, <span class="sv">"ROG.SW"</span>, <span class="sv">"NOVN.SW"</span>],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"oracleAddress"</span>: <span class="sv">"0xA3f...91c"</span> <span class="sc">// on-chain price feed</span><br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;<span class="sk">"maturity"</span>: <span class="sv">"2027-06-15"</span>,<br>
+&nbsp;&nbsp;<span class="sk">"currency"</span>: <span class="sv">"CHF"</span>,<br>
+&nbsp;&nbsp;<span class="sk">"autocall"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"observationDates"</span>: [<span class="sv">"2025-06-15"</span>, <span class="sv">"2026-06-15"</span>],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"triggerLevel"</span>: <span class="sn">1.00</span>, <span class="sc">// 100% of initial fixing</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"redemptionPremium"</span>: <span class="sn">0.08</span> <span class="sc">// 8% p.a. if called</span><br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;<span class="sk">"barrier"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"type"</span>: <span class="sv">"european"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"level"</span>: <span class="sn">0.60</span>, <span class="sc">// 60% capital protection</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"observationType"</span>: <span class="sv">"closing"</span><br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;<span class="sk">"lifecycle"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"couponLogic"</span>: <span class="sv">"memory"</span>, <span class="sc">// missed coupons accumulate</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"corporateActions"</span>: <span class="sv">"adjusted"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"settlementAgent"</span>: <span class="sv">"contract"</span> <span class="sc">// self-settling</span><br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;<span class="sk">"regulatory"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"isin"</span>: <span class="sv">"CH1234567890"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"kidHash"</span>: <span class="sv">"0xb7e...44a"</span>, <span class="sc">// PRIIP KID content hash</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="sk">"targetMarket"</span>: <span class="sv">"professional"</span><br>
+&nbsp;&nbsp;}<br>
+}
+</div>
+
+<div class="box-blue">
+  <div class="box-lbl">Why this matters in practice</div>
+  <p>With a standardized schema, a tokenized autocall issued on SDX could be priced by a risk engine on a completely different platform, displayed correctly in a wealth management portal, and settled automatically at maturity — without any bilateral integration work. Today, each of those connections requires bespoke data mapping. The closest existing standards are ISDA's CDM for derivatives and ANNA's work on ISIN harmonization. Neither was designed for on-chain execution. A purpose-built financial product schema standard — governed by a credible industry body — remains an open problem.</p>
+</div>
+
+<h2>The real missing piece: a secondary market that barely exists</h2>
+<p>Primary issuance infrastructure is only half the equation — and arguably the easier half. The secondary market for tokenized assets is nascent, fragmented, and in most cases functionally illiquid. A tokenized product that cannot be sold is not an asset. It is a locked position with a smart contract attached.</p>
+
+<div class="tok-compare">
+  <div class="tok-card featured">
+    <span class="tok-tag tag-blue">Traditional structured products</span>
+    <ul>
+      <li><span class="li-dot blue"></span>Market makers quote continuously on SIX, Euronext</li>
+      <li><span class="li-dot blue"></span>Bid-ask spreads typically 0.1–0.5% for vanilla products</li>
+      <li><span class="li-dot blue"></span>Settled via established CSDs (Euroclear, SIX SIS) at T+2</li>
+      <li><span class="li-dot blue"></span>Visible in Bloomberg, Refinitiv, and all major data feeds</li>
+      <li><span class="li-dot blue"></span>Bookable in any custodian via ISIN</li>
+    </ul>
+  </div>
+  <div class="tok-card">
+    <span class="tok-tag tag-gray">Tokenized assets today</span>
+    <ul>
+      <li><span class="li-dot gray"></span>A handful of venues (SDX, Boerse Stuttgart Digital) with thin order books</li>
+      <li><span class="li-dot gray"></span>Spreads often 2–5%+ or no continuous quote at all</li>
+      <li><span class="li-dot gray"></span>Settlement fragmented across chains and custodians</li>
+      <li><span class="li-dot gray"></span>Not visible in standard financial data infrastructure</li>
+      <li><span class="li-dot gray"></span>Not bookable in most custodian systems without manual workarounds</li>
+    </ul>
+  </div>
+</div>
+
+<div class="box-amber">
+  <div class="box-lbl">The liquidity illusion</div>
+  <p>Many tokenized assets are marketed as more liquid than their traditional equivalents — fractional ownership, 24/7 transferability, programmable settlement. But transferability is not liquidity. A token can be technically transferable on-chain while having zero willing buyers at any given moment. The infrastructure that creates genuine liquidity — continuous quoting, market making, data visibility, custodial integration — is largely absent.</p>
+</div>
+
+<h3>Why the secondary market has not developed</h3>
+
+<div class="tok-causes">
+  <div class="tok-cause">
+    <div class="c-num">01</div>
+    <div>
+      <div class="c-title">Fragmentation across chains and platforms</div>
+      <div class="c-desc">A tokenized bond on SDX, a real estate token on Polygon, and a fund unit on a permissioned Ethereum chain are not interoperable. Each creates its own liquidity island. Unlike traditional markets where ISINs ensure any product can trade on any venue, tokenized assets are siloed by their issuance platform.</div>
+    </div>
+  </div>
+  <div class="tok-cause">
+    <div class="c-num">02</div>
+    <div>
+      <div class="c-title">No market-making economics</div>
+      <div class="c-desc">Market makers in traditional structured products earn the bid-ask spread against a hedgeable underlying. For tokenized assets, the hedging infrastructure is absent, regulatory treatment of inventory is unclear, and volumes are too small to justify the operational overhead. Without professional market makers, there is no continuous price.</div>
+    </div>
+  </div>
+  <div class="tok-cause">
+    <div class="c-num">03</div>
+    <div>
+      <div class="c-title">Absence from financial data infrastructure</div>
+      <div class="c-desc">If a tokenized asset does not have an ISIN, it does not appear in Bloomberg or Refinitiv. If it does not appear there, institutional investors cannot monitor, price, or include it in risk systems. Invisibility to data infrastructure is invisibility to most of the buy side.</div>
+    </div>
+  </div>
+  <div class="tok-cause">
+    <div class="c-num">04</div>
+    <div>
+      <div class="c-title">Small float per asset</div>
+      <div class="c-desc">Most tokenized assets represent a single deal — a €5M loan, a building, a fund tranche. Even if secondary trading infrastructure existed, the float on any individual token is too small to sustain meaningful market depth. Industrial-scale issuance is a prerequisite for liquid secondary markets, not a consequence of them.</div>
+    </div>
+  </div>
+  <div class="tok-cause">
+    <div class="c-num">05</div>
+    <div>
+      <div class="c-title">Settlement finality and custodial uncertainty</div>
+      <div class="c-desc">For a secondary trade to settle cleanly, both legs need to clear through infrastructure that institutional counterparties trust. Delivery-versus-payment for tokenized assets remains experimental on most platforms. Without settlement finality certainty, institutions cannot hold tokenized assets on balance sheet at scale.</div>
+    </div>
+  </div>
+</div>
+
+<div class="box-blue">
+  <div class="box-lbl">What this looks like in practice</div>
+  <p>An investor buys a tokenized real estate token representing a fractional interest in a commercial property in Zurich. The token is technically transferable 24/7. But when the investor needs liquidity six months later, there is no exchange quoting it, no market maker providing a bid, and no mechanism to find a willing buyer other than bilateral negotiation. The investor is in a worse position than if they had bought a traditional real estate fund with quarterly redemption windows — at least those come with a defined exit mechanism.</p>
+</div>
+
+<h3>What would actually unlock secondary liquidity</h3>
+
+<div class="tok-unlock">
+  <div class="tok-unlock-card">
+    <span class="bdg b-amber">Near term</span>
+    <div class="u-title">Regulated MTFs for tokenized securities</div>
+    <div class="u-desc">Venues like SDX and Boerse Stuttgart Digital need order book depth. This requires attracting market makers — which requires volume — a classic chicken-and-egg problem that only regulatory mandates or anchor issuers can break.</div>
+  </div>
+  <div class="tok-unlock-card">
+    <span class="bdg b-amber">Near term</span>
+    <div class="u-title">Cross-platform interoperability</div>
+    <div class="u-desc">Atomic swap mechanisms or bridge infrastructure that allows a token issued on one platform to trade on another. Without this, each platform's secondary market remains a liquidity island regardless of total market size.</div>
+  </div>
+  <div class="tok-unlock-card">
+    <span class="bdg b-green">Medium term</span>
+    <div class="u-title">ISIN integration for all tokenized assets</div>
+    <div class="u-desc">Once tokenized assets carry ISINs and appear in Bloomberg and Refinitiv, institutional monitoring, pricing, and eventually trading become possible. Data visibility is a precondition for buy-side interest, not a consequence of it.</div>
+  </div>
+  <div class="tok-unlock-card">
+    <span class="bdg b-green">Medium term</span>
+    <div class="u-title">Standardized DvP settlement</div>
+    <div class="u-desc">Delivery-versus-payment finality — ideally via central bank digital currency or a recognized settlement asset — removes the counterparty risk that prevents institutions from holding tokenized positions on balance sheet at scale.</div>
+  </div>
+</div>
+
+<blockquote>
+  <p>Secondary market liquidity requires scale, and scale requires secondary market liquidity. Tokenization cannot buy its way out of this loop with technology alone — it requires regulatory intervention, institutional anchor commitments, or both.</p>
+</blockquote>
+
+<h2>The demand side: who actually buys tokenized products</h2>
+<p>Issuance infrastructure and secondary markets are only meaningful if buyers can access and hold what is issued. The demand side has three distinct segments, each with different barriers.</p>
+
+<div class="tok-demand">
+  <div class="tok-demand-card">
+    <div class="d-seg">Institutional</div>
+    <div class="d-barrier">Custodians cannot hold most tokenized assets. Prime brokers have no margin framework for them. Risk systems cannot consume non-standard product descriptions.</div>
+    <div class="d-unlock">Unlock: custody solutions (e.g. Clearstream D7, SIX Digital Exchange) and regulatory recognition under the DLT Pilot Regime.</div>
+  </div>
+  <div class="tok-demand-card">
+    <div class="d-seg">Private banking / UHNW</div>
+    <div class="d-barrier">PMS platforms such as Avaloq and Temenos have added digital asset support, but the connectivity layer between those systems and tokenized asset infrastructure remains thin. Booking workflows, compliance processes, and relationship manager tooling have not kept pace with underlying platform capability.</div>
+    <div class="d-unlock">Unlock: standardized APIs between tokenization platforms and PMS systems, and internal workflow automation within banks — not the PMS vendors themselves.</div>
+  </div>
+  <div class="tok-demand-card">
+    <div class="d-seg">Retail</div>
+    <div class="d-barrier">No PRIIP KID means no retail distribution in the EU. No ISIN means no booking in retail brokerage accounts. No regulatory clarity on investor protection.</div>
+    <div class="d-unlock">Unlock: MiCA covers crypto-assets but not yet tokenized securities. ISIN issuance for tokenized instruments is the practical first step.</div>
+  </div>
+</div>
+
+<div class="box-amber">
+  <div class="box-lbl">The distribution paradox</div>
+  <p>Tokenization's most compelling pitch to issuers is democratization — reaching a broader investor base at lower cost. But today's tokenized products are predominantly accessible only to professional or institutional investors, due to the regulatory and infrastructure gaps above. The technology promises to widen distribution; the current reality narrows it.</p>
+</div>
+
+<h2>The counter-argument: is industrial-scale tokenization even the right goal?</h2>
+<p>There is a serious version of the argument that this entire analysis misses the point.</p>
+
+<div class="tok-tension">
+  <div class="t-label">Two reasonable positions</div>
+  <div class="tok-tension-grid">
+    <div class="t-side left">
+      <div class="t-side-label">The premise of this article</div>
+      <p>Tokenization should be judged against the industrial scale of traditional structured product issuance. Until it can match 2 million products per quarter with automated lifecycle management and liquid secondary markets, it has not delivered on its promise.</p>
+    </div>
+    <div class="t-side right">
+      <div class="t-side-label">The counter-argument</div>
+      <p>Tokenization is not competing with structured products. It is opening up asset classes — private credit, real estate, infrastructure, fund units — where traditional issuance infrastructure does not exist and where even hundreds of tokenized assets represent genuine market creation, not failure.</p>
+    </div>
+  </div>
+</div>
+
+<p>The counter-argument has real force. A tokenized private credit facility for an SME, or fractional real estate accessible to a retail investor, does not have a traditional structured product equivalent. The comparison to certificate issuance may be measuring the wrong thing.</p>
+
+<p>At the same time, the counter-argument lets the tokenization industry off a hook it should be held to. If the technology genuinely makes issuance cheaper and easier, it should eventually reach industrial scale in every asset class — not just the ones where traditional infrastructure is absent. The fact that most activity concentrates in a narrow band of assets where there is no incumbent to compete with may reflect a technology that is not yet ready for competitive markets, rather than a deliberate strategic choice.</p>
+
+<blockquote>
+  <p>Both things can be true: tokenization is creating genuine value in underserved asset classes, and it is not yet capable of competing with traditional infrastructure in established ones. The question is whether the former eventually leads to the latter, or whether the two ecosystems remain permanently parallel.</p>
+</blockquote>
+
+<h2>The road ahead</h2>
+
+<div class="tok-roadmap">
+  <div class="rm-item">
+    <div class="rm-left"><span class="rm-badge badge-now">Now</span><div class="rm-line"></div></div>
+    <div class="rm-content">
+      <div class="rm-title">Artisanal, high-cost, institutionally constrained</div>
+      <div class="rm-desc">Bespoke smart contracts. Cost per issuance 10–100× traditional. Regulatory gaps limit distribution to professional investors. No standardized schemas. Secondary markets thin to non-existent. Platforms celebrated for their first hundred assets.</div>
+    </div>
+  </div>
+  <div class="rm-item">
+    <div class="rm-left"><span class="rm-badge badge-next">Next</span><div class="rm-line"></div></div>
+    <div class="rm-content">
+      <div class="rm-title">Templated issuance, regulatory integration, nascent liquidity</div>
+      <div class="rm-desc">Reusable product templates reduce marginal cost. ISIN integration and PRIIP KID automation unlock broader distribution. DLT Pilot Regime matures. Schema standards emerge. Regulated MTFs attract anchor market makers. PMS connectivity gaps close. Cost parity with traditional issuance becomes achievable for some product types.</div>
+    </div>
+  </div>
+  <div class="rm-item">
+    <div class="rm-left"><span class="rm-badge badge-future">Future</span><div class="rm-line"></div></div>
+    <div class="rm-content">
+      <div class="rm-title">Industrial-scale, self-described, interoperable, liquid</div>
+      <div class="rm-desc">Millions of products issued from standardized templates. Self-describing tokens consumed natively by risk systems, PMS platforms, and secondary markets. Automated lifecycle management. Continuous quoting on regulated venues with professional market makers. DvP settlement via CBDC or recognized settlement assets. The 2 million structured products per quarter becomes the floor, not the ceiling.</div>
+    </div>
+  </div>
+</div>
+
+<p>The gap between now and the future stage is not primarily a technology gap. The smart contract primitives exist. The gap is in standardization, secondary market infrastructure, regulatory integration, and distribution — all of which require industry coordination rather than individual innovation. That is a slower, harder problem. And it is the one that actually needs solving.</p>
+
+<p class="tok-footnote">Cost estimates are order-of-magnitude approximations intended to illustrate relative scale, not precise industry benchmarks.</p>
+
+</div>

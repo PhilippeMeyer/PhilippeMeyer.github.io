@@ -6,6 +6,7 @@ author: Philippe Meyer
 categories: blockchain
 tags: #blockchain, #ai 
 modified_time: '2025-09-28T11:16:49.938+02:00'
+image: /docs/assets/images/illustration_AI_decides_Blockchain_commits.svg
 ---
 ![AI decides, Blockchain commits](https://PhilippeMeyer.github.io/docs/assets/images/illustration_AI_decides_Blockchain_commits.svg)
 <br />

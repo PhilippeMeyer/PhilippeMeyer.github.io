@@ -1,0 +1,106 @@
+---
+layout: default
+---
+<div class="wrap post-list-wrap">
+  {{ content }}
+
+  <ul class="post-list" id="post-list" data-page-size="9">
+    {% for post in site.posts %}
+      <li class="post-row">
+        {% if post.image %}
+          <a class="post-row-thumb" href="{{ post.url | relative_url }}" aria-hidden="true">
+            <img src="{{ post.image | relative_url }}" alt="" loading="lazy" width="600" height="322">
+          </a>
+        {% endif %}
+        <div class="post-row-body">
+          <span class="post-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%b %-d, %Y" }}
+            </time>
+          </span>
+          <h3 class="post-row-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          </h3>
+          {% if post.excerpt %}
+            <p class="post-row-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <nav class="pagination" id="post-pagination" aria-label="Posts pagination" hidden>
+    <a href="#" id="post-pagination-prev" rel="prev">&laquo; Newer</a>
+    <span class="post-pagination-status" id="post-pagination-status"></span>
+    <a href="#" id="post-pagination-next" rel="next">Older &raquo;</a>
+  </nav>
+</div>
+
+<script>
+(function () {
+  var list = document.getElementById('post-list');
+  if (!list) return;
+
+  var items = Array.prototype.slice.call(list.querySelectorAll('.post-row'));
+  var pageSize = parseInt(list.getAttribute('data-page-size'), 10) || 9;
+  if (items.length <= pageSize) return;
+
+  var nav = document.getElementById('post-pagination');
+  var prevLink = document.getElementById('post-pagination-prev');
+  var nextLink = document.getElementById('post-pagination-next');
+  var status = document.getElementById('post-pagination-status');
+  var pageCount = Math.ceil(items.length / pageSize);
+  var currentPage = 1;
+
+  function pageFromHash() {
+    var m = /page=(\d+)/.exec(window.location.hash);
+    var p = m ? parseInt(m[1], 10) : 1;
+    if (isNaN(p) || p < 1) p = 1;
+    if (p > pageCount) p = pageCount;
+    return p;
+  }
+
+  function render(page) {
+    var start = (page - 1) * pageSize;
+    var end = start + pageSize;
+
+    items.forEach(function (item, i) {
+      item.hidden = i < start || i >= end;
+    });
+
+    status.textContent = 'Page ' + page + ' of ' + pageCount;
+
+    var atStart = page <= 1;
+    var atEnd = page >= pageCount;
+    prevLink.classList.toggle('is-disabled', atStart);
+    nextLink.classList.toggle('is-disabled', atEnd);
+    prevLink.setAttribute('aria-disabled', atStart);
+    nextLink.setAttribute('aria-disabled', atEnd);
+
+    nav.hidden = false;
+    currentPage = page;
+  }
+
+  function goTo(page) {
+    window.location.hash = 'page=' + page;
+    render(page);
+    list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  prevLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (currentPage > 1) goTo(currentPage - 1);
+  });
+
+  nextLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (currentPage < pageCount) goTo(currentPage + 1);
+  });
+
+  window.addEventListener('hashchange', function () {
+    render(pageFromHash());
+  });
+
+  render(pageFromHash());
+})();
+</script>

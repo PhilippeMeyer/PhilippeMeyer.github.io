@@ -1,4 +1,17 @@
-# From Automation to Tokenization
+---
+layout: post
+title: "From Automation to Tokenization"
+date: 2022-08-18
+categories: [blockchain, tokenization, digitalization]
+tags: [tokenization, automation, digitalization, smart-contracts]
+author: Philippe Meyer
+description: "Automation, digitization, digitalization and tokenization are often used interchangeably, but they are distinct stages of the same journey. Here is how each one builds on the last, and why tokenization closes a gap the others cannot."
+image: /docs/assets/images/automation-to-tokenization.png
+excerpt: >
+  Automation, digitization, digitalization and tokenization are often used interchangeably, but they are distinct stages of the same journey. Here is how each one builds on the last, and why tokenization closes a gap the others cannot.
+---
+
+![From Automation to Tokenization](/docs/assets/images/automation-to-tokenization.png)
 
 [![From automation to Tokenization](https://img.youtube.com/vi/v04GjInRfgU/maxresdefault.jpg)](https://www.youtube.com/watch?v=v04GjInRfgU)
 

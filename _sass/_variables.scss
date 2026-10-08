@@ -1,0 +1,23 @@
+// Brand tokens — copied verbatim from the main site's :root custom properties
+// (index.html). Keep these in sync if the site's palette changes.
+
+$ink:             #0E1A2B;
+$ink-soft:        #16283D;
+$paper:           #F3F2EE;
+$paper-dim:       #E8E6DF;
+$steel:           #5B7488;
+
+$brass:           #18B478; // primary accent (logo green)
+$brass-bright:    #5DCAA0;
+$brass-on-light:  #0F7A52; // darker variant for text on light/paper backgrounds
+
+$line-dark:       rgba(243, 242, 238, 0.14);
+$line-light:      rgba(14, 26, 43, 0.12);
+
+$font-serif: 'Source Serif 4', Georgia, serif;
+$font-sans:  'Inter', -apple-system, sans-serif;
+$font-mono:  'IBM Plex Mono', monospace;
+
+// Thumbnail geometry — source images are LinkedIn-format 600x322 (~1.86:1)
+$thumb-width:  180px;
+$thumb-ratio:  322 / 600;

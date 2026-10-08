@@ -5,6 +5,7 @@ date: '2019-04-28T20:14:49.938+02:00'
 author: Philippe Meyer
 categories: blockchain
 tags: #blockchain, #dvp, #ethereum, #smartcontract 
+image: /docs/assets/images/tokenToAccounting.png
 ---
 ![token to accounting](https://PhilippeMeyer.github.io/docs/assets/images/tokenToAccounting.png)
 <br />

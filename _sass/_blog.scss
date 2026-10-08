@@ -1,0 +1,178 @@
+// Blog-specific styles layered on top of the brand tokens in _variables.scss
+// Blog pages render on Minima's light/paper background, so accent colors use
+// the on-light variant ($brass-on-light) where contrast against $paper matters.
+
+.post-list {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  border-top: 1px solid $line-light;
+}
+
+.post-row {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid $line-light;
+
+  // Pagination (see _layouts/home.html) hides off-page posts by setting the
+  // `hidden` attribute. Without this rule, the `display: flex` above (same
+  // specificity as the browser's own [hidden] default, but author CSS wins
+  // ties) keeps every post visible regardless of the attribute.
+  &[hidden] {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+}
+
+.post-row-thumb {
+  flex: 0 0 $thumb-width;
+  display: block;
+  overflow: hidden;
+  line-height: 0;
+  background: $paper-dim;
+
+  img {
+    width: $thumb-width;
+    height: calc(#{$thumb-width} * #{$thumb-ratio});
+    object-fit: cover;
+    display: block;
+    filter: grayscale(35%);
+    transition: filter 0.25s ease;
+  }
+
+  &:hover img {
+    filter: grayscale(0%);
+  }
+
+  @media (max-width: 640px) {
+    flex: 0 0 auto;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 600 / 322;
+    }
+  }
+}
+
+.post-row-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.post-row-title {
+  font-family: $font-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.2rem 0 0.4rem;
+
+  a {
+    text-decoration: none;
+    color: $ink;
+
+    &:hover {
+      color: $brass-on-light;
+    }
+  }
+}
+
+.post-row-excerpt {
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  color: $steel;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.post-meta {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: $brass-on-light;
+}
+
+// Full post page
+
+.post-header {
+  margin: 2.5rem 0 1.5rem;
+}
+
+.post-title {
+  font-family: $font-serif;
+  font-size: 2.1rem;
+  line-height: 1.2;
+  margin: 0.4rem 0;
+}
+
+.post-content {
+  font-family: $font-sans;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: $ink;
+
+  h2, h3 {
+    font-family: $font-serif;
+  }
+
+  a {
+    color: $brass-on-light;
+
+    &:hover {
+      color: $brass;
+    }
+  }
+
+  // The hero/lead image is embedded manually as the first line of each
+  // post's markdown (established convention — see _posts/*.md), so it
+  // inherits normal markdown image styling rather than a layout-level figure.
+  > p:first-of-type img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  > p:first-of-type em {
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    color: $steel;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2.5rem 0;
+  font-family: $font-mono;
+  font-size: 0.85rem;
+
+  a {
+    color: $brass-on-light;
+    text-decoration: none;
+
+    &:hover {
+      color: $brass;
+    }
+
+    &.is-disabled {
+      color: $line-light;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+}
+
+.post-pagination-status {
+  color: $steel;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}

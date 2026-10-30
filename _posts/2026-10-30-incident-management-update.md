@@ -4,12 +4,12 @@ title: "Incident Management: Don't Just Restore Service, Understand It"
 date: 2026-10-30 09:30:00 +0100
 categories: field-notes
 tags: [incident-management, root-cause-analysis, itil, blameless-culture, safety-culture, it-operations]
-image: /docs/assets/images/From Blame to System Understanding.png
-description: An update of my 2012 article on incident management: why understanding root causes matters more than restoring service, and what aviation teaches IT operations.
+image: /docs/assets/images/From-blame-to-system-understanding.png
+description: "An update of my 2012 article on incident management: why understanding root causes matters more than restoring service, and what aviation teaches IT operations."
 excerpt: >
   Fourteen years after my first article on incident management, I’ve revisited it with a lesson from aviation, and added three principles I wish I had written down back then.
 ---
-![Technicians do not make error on purpose](/docs/assets/images/From Blame to System Understanding.png)
+![Technicians do not make error on purpose](/docs/assets/images/From-blame-to-system-understanding.png)
 
 *Updated October 2026. Originally published on [meyer.today]({{ site.baseurl }}/2012/12/02/incident-management.html) on December 2, 2012.*
 
